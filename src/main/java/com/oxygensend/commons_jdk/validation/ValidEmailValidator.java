@@ -7,6 +7,6 @@ public class ValidEmailValidator extends AbstractEmailValidator<ValidEmail> {
 
     @Override
     public boolean isValid(CharSequence value, ConstraintValidatorContext context) {
-        return super.isValid(value, context) && value != null && !value.isEmpty();
+        return value == null || super.isValid(value, context) && !value.isEmpty();
     }
 }
