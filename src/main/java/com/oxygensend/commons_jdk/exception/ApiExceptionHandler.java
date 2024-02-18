@@ -26,6 +26,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ApiException.class)
     public ResponseEntity<Object> handleCustomException(ApiException ex) {
+        logger.info("Throwing an exception: " + ex);
         return buildResponseEntity(new ExceptionResponse(ex.getStatusCode(), ex.getMessage()));
     }
 
@@ -39,7 +40,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 
     private ResponseEntity<Object> buildResponseEntity(ExceptionResponse exceptionResponse) {
-        logger.info("Throwing an exception: " + exceptionResponse);
         return new ResponseEntity<>(exceptionResponse, exceptionResponse.getStatus());
     }
 
