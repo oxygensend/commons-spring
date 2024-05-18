@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RequestContext {
-    Optional<Long> userId();
+    Optional<String> userId();
 
     List<String> authorities();
 
     default String userIdAsString() {
-        return userId().map(String::valueOf).orElse("Unknown");
+        return userId().orElse("Unknown");
     }
 
     default boolean hasAuthority(String authority) {
@@ -18,6 +18,10 @@ public interface RequestContext {
 
 
     default boolean isUserAuthenticated(Long userId) {
+        return userId().isPresent() && userId().get().equals(userId.toString());
+    }
+
+    default boolean isUserAuthenticated(String userId) {
         return userId().isPresent() && userId().get().equals(userId);
     }
 

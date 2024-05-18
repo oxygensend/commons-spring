@@ -21,6 +21,6 @@ public class RequestContextConfiguration {
             return HttpRequestContext.EMPTY;
         }
 
-        return new HttpRequestContext(Long.valueOf(userId), List.of(authorities.split(",")));
+        return new HttpRequestContext(userId, List.of(authorities.split(",")));
     }
 }
