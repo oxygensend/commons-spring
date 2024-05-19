@@ -25,4 +25,8 @@ public interface RequestContext {
         return userId().isPresent() && userId().get().equals(userId);
     }
 
+    default boolean isAuthorized() {
+        return userId().isPresent();
+    }
+
 }
