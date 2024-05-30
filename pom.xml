@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>commons-jdk</artifactId>
+    <artifactId>commons-spring</artifactId>
     <version>1.0.1-SNAPSHOT</version>
-    <name>commons-jdk</name>
-    <description>Common classes used across my microservices</description>
+    <name>commons-spring</name>
+    <description>Common classes used across my spring cloud microservices</description>
     <packaging>jar</packaging>
 
     <parent>
