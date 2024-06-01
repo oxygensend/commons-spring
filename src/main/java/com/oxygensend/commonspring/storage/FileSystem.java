@@ -8,10 +8,8 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Component;
 import org.springframework.util.FileSystemUtils;
 
-@Component
 final class FileSystem {
 
     public void save(InputStream stream, Path destination) throws IOException {

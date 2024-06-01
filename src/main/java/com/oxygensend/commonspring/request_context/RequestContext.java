@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RequestContext {
+
+    String requestId();
+
     Optional<String> userId();
 
     List<String> authorities();

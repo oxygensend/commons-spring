@@ -7,6 +7,10 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(StorageProperties.class)
 @Configuration
 public class StorageConfiguration {
+    @Bean
+    FileSystem fileSystem() {
+        return new FileSystem();
+    }
 
     @Bean
     StorageService imagesStoreService(StorageProperties storageProperties, FileSystem fileSystem) {
