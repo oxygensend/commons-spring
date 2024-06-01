@@ -1,6 +1,8 @@
 package com.oxygensend.commonspring.feign;
 
+import com.oxygensend.commonspring.request_context.RequestContext;
 import feign.Client;
+import feign.RequestInterceptor;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -30,6 +32,13 @@ public class CommonFeignConfiguration {
         return switch (properties.type()) {
             case SERVICE_DISCOVERY -> feignClientFactory.eurekaFeignClient(loadBalancerClient, loadBalancerClientFactory);
             case URI -> feignClientFactory.uriFeignClient();
+        };
+    }
+
+    @Bean
+    RequestInterceptor requestIdHeaderPropagation(RequestContext requestContext) {
+        return requestTemplate -> {
+            requestTemplate.header("Request-Id", requestContext.requestId());
         };
     }
 
